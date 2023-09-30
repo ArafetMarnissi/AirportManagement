@@ -19,6 +19,11 @@ namespace AM.ApplicationCore.Domain
                 + " Salary : " + Salary
                 ;
         }
+        public override void PassengerType()
+        {
+            base.PassengerType();
+            Console.WriteLine("I am a staff memeber");
+        }
 
     }
 }
