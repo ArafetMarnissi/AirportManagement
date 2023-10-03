@@ -15,7 +15,7 @@ namespace AM.ApplicationCore.Domain
         public int TelNumber { get; set; }
         public string EmailAddress { get; set; }
         public int PassportNumber { get; set; }
-        public List<Flight> Flights { get; set; }
+        public ICollection<Flight> Flights { get; set; }
 
         public override string? ToString()
         {

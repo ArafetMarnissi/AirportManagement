@@ -26,9 +26,28 @@ Traveller tr = new Traveller();
 p1.PassengerType();
 s1.PassengerType();
 tr.PassengerType();
-Console.WriteLine("*************GetFlightDates***************");
 FlightMethods flightMethods = new FlightMethods();
 flightMethods.Flights = TestData.listFlights;
-flightMethods.GetFlightDates("Madrid");
+Console.WriteLine("*************GetFlightDates***************");
+
+
+flightMethods.GetFlightDates("Paris");
 Console.WriteLine("*************GetFlights***************");
 flightMethods.GetFlights("Destination", "Madrid");
+Console.WriteLine("*************ShowFlightDetails***************");
+flightMethods.FlightDetailsDel(TestData.BoingPlane);
+//flightMethods.ShowFlightDetails(TestData.BoingPlane);
+Console.WriteLine("*************ProgrammedFlightNumber***************");
+Console.WriteLine( flightMethods.ProgrammedFlightNumber(new DateTime(2022, 2, 1,10,10,0)));
+Console.WriteLine("*************DurationAverage***************");
+
+Console.WriteLine(flightMethods.DurationAverageDel("Paris"));
+Console.WriteLine("*************OrderedDurationFlights***************");
+foreach (Flight f in flightMethods.OrderedDurationFlights())
+    Console.WriteLine(f.ToString());
+Console.WriteLine("*************SeniorTravellers***************");
+foreach (Passenger f in flightMethods.SeniorTravellers(TestData.flight1))
+    Console.WriteLine(f.ToString());
+
+Console.WriteLine("*************DestinationGroupedFlights***************");
+flightMethods.DestinationGroupedFlights();
