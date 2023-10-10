@@ -51,3 +51,6 @@ foreach (Passenger f in flightMethods.SeniorTravellers(TestData.flight1))
 
 Console.WriteLine("*************DestinationGroupedFlights***************");
 flightMethods.DestinationGroupedFlights();
+Console.WriteLine("*************UpperFullName***************");
+p1.UpperFullName();
+Console.WriteLine(p1.ToString());
