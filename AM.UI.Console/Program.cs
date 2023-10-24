@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using AM.ApplicationCore.Domain;
 using AM.ApplicationCore.Service;
+using AM.Infrastructure;
 
 Console.WriteLine("Hello, World!");
 Plane plane = new Plane();
@@ -17,7 +18,7 @@ Plane plane2 = new Plane
 };
 Console.WriteLine(plane2.ToString());
 //tester checkProfile()
-Passenger p1 = new Passenger { FirstName ="arafet", LastName="marnissi", EmailAddress="marnissiarafet@gmail.com"};
+Passenger p1 = new Passenger { FullName =new FullName { FirstName="arafet", LastName="marnissi" }, EmailAddress="marnissiarafet@gmail.com"};
 Console.WriteLine( p1.CheckProfile("arafet", "marnissi"));
 Console.WriteLine(p1.CheckProfile("arafet", "marnissi","marnisiarafet@gmail.com"));
 //tester passengerType
@@ -45,12 +46,32 @@ Console.WriteLine(flightMethods.DurationAverageDel("Paris"));
 Console.WriteLine("*************OrderedDurationFlights***************");
 foreach (Flight f in flightMethods.OrderedDurationFlights())
     Console.WriteLine(f.ToString());
-Console.WriteLine("*************SeniorTravellers***************");
-foreach (Passenger f in flightMethods.SeniorTravellers(TestData.flight1))
-    Console.WriteLine(f.ToString());
+/*Console.WriteLine("*************SeniorTravellers***************");
+foreach (Passenger f in flightMethods.SeniorTravellers(TestData.flight2))
+    Console.WriteLine(f.ToString());*/
 
 Console.WriteLine("*************DestinationGroupedFlights***************");
 flightMethods.DestinationGroupedFlights();
 Console.WriteLine("*************UpperFullName***************");
 p1.UpperFullName();
 Console.WriteLine(p1.ToString());
+//insertion de données
+AMContext ctx = new AMContext();
+/*ctx.Planes.Add(TestData.BoingPlane);
+ctx.Planes.Add(TestData.Airbusplane);*/
+///////////////////////////////////////////////
+//inserion des deux Flights
+
+/*ctx.Flights.Add(TestData.flight1);
+ctx.Flights.Add(TestData.flight2);
+//persistance de données
+ctx.SaveChanges();
+Console.WriteLine("Ajout avec succées");*/
+///////////////////////////////////////////////
+
+//Affichage de contenu
+Console.WriteLine("****************Affichage de contenu******************");
+foreach(Flight f in ctx.Flights)
+    Console.WriteLine("Destination : "+f.Destination+" Date : "+ f.FlightDate+ "Capacity : "+f.Plane.Capacity);
+
+

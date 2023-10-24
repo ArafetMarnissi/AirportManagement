@@ -18,31 +18,29 @@ namespace AM.ApplicationCore.Domain
         [Display(Name ="Date of birth")]
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
-        
-        [MaxLength(25,ErrorMessage ="the max length is 25")]
-        [MinLength(3,ErrorMessage ="the min length is 3")]
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+
+        public FullName FullName { get; set; }
+
         [RegularExpression("^[0-9](8)$")]
         public int TelNumber { get; set; }
 
         [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
        
-        public ICollection<Flight> Flights { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
 
         public override string? ToString()
         {
             return "BirthDate : " + BirthDate
-                + " FirstName : " + FirstName
-                + " LastName : " + LastName
+                + " FirstName : " + FullName.FirstName
+                + " LastName : " + FullName.LastName
                 + " TelNumber : " + TelNumber
                 + " EmailAddress : " + EmailAddress
                 + " PassportNumber : " + PassportNumber;
         }
         public Boolean CheckProfile(string prenom,string nom)
         {
-            return(FirstName.Equals(prenom) && LastName.Equals(nom));
+            return(FullName.FirstName.Equals(prenom) && FullName.LastName.Equals(nom));
         }
        /* public Boolean CheckProfile(string prenom, string nom, string email)
         {
@@ -56,11 +54,11 @@ namespace AM.ApplicationCore.Domain
         {
             if(email != null)
             {
-                return (FirstName.Equals(prenom) && LastName.Equals(nom) && EmailAddress.Equals(email));
+                return (FullName.FirstName.Equals(prenom) && FullName.LastName.Equals(nom) && EmailAddress.Equals(email));
 
             }
             else {
-                return (FirstName.Equals(prenom) && LastName.Equals(nom));
+                return (FullName.FirstName.Equals(prenom) && FullName.LastName.Equals(nom));
 
             }
            

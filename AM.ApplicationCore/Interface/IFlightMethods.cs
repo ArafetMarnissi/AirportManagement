@@ -15,7 +15,7 @@ namespace AM.ApplicationCore.Interface
         int ProgrammedFlightNumber(DateTime startDate);
         double DurationAverage(string destination);
         IEnumerable<Flight> OrderedDurationFlights();
-        IEnumerable<Passenger> SeniorTravellers(Flight flight);
+        //IEnumerable<Passenger> SeniorTravellers(Flight flight);
         IEnumerable<IGrouping<String, Flight>> DestinationGroupedFlights();
 
 
