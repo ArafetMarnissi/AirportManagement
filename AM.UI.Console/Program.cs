@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using AM.ApplicationCore.Domain;
+using AM.ApplicationCore.Interface;
 using AM.ApplicationCore.Service;
 using AM.Infrastructure;
 
@@ -56,7 +57,7 @@ Console.WriteLine("*************UpperFullName***************");
 p1.UpperFullName();
 Console.WriteLine(p1.ToString());
 //insertion de données
-AMContext ctx = new AMContext();
+
 /*ctx.Planes.Add(TestData.BoingPlane);
 ctx.Planes.Add(TestData.Airbusplane);*/
 ///////////////////////////////////////////////
@@ -70,8 +71,12 @@ Console.WriteLine("Ajout avec succées");*/
 ///////////////////////////////////////////////
 
 //Affichage de contenu
+AMContext ctx = new AMContext();
+IUnitOfWork unitOfWork = new UnitOfWork(ctx);
+IServiceFlight sf = new ServiceFlight(unitOfWork);
+
 Console.WriteLine("****************Affichage de contenu******************");
-foreach(Flight f in ctx.Flights)
+foreach(Flight f in sf.GetMany())
     Console.WriteLine("Destination : "+f.Destination+" Date : "+ f.FlightDate+ "Capacity : "+f.Plane.Capacity);
 
 
