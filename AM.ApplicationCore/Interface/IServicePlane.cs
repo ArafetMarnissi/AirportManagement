@@ -11,6 +11,9 @@ namespace AM.ApplicationCore.Interface
 {
     public interface IServicePlane : IService<Plane>
     {
-       
+       IEnumerable<Passenger> GetPassengers (Plane plane);
+       IEnumerable<Flight> GetFlights(int n);
+        Boolean IsAvailablePlane(Flight flight,int n);
+        void DeletePlane();
     }
 }
