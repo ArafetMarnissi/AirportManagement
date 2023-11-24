@@ -9,6 +9,6 @@ namespace AM.ApplicationCore.Interface
 {
     public interface IServiceFlight:IService<Flight>
     {
-      
+        IEnumerable<Flight> SortFlights();
     }
 }

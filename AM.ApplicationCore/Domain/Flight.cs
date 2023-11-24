@@ -10,6 +10,7 @@ namespace AM.ApplicationCore.Domain
     public class Flight
     {
         public int FlightId { get; set; }
+        public string Pilot { get; set; } 
         public string Destination { get; set; }
         public string Departure { get; set; }
         public DateTime FlightDate { get; set; }

@@ -1,20 +1,11 @@
 ﻿@model IEnumerable<AM.ApplicationCore.Domain.Flight>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sort";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-<form asp-action="index">
-    <fieldset>
-        <legend> Recherche</legend>
-        Saisir une date de départ :
-        <input type="datetime" name="dateDepart" />
-        <input type="submit" value="Serach" />
-        <input type="submit" value="Sort" asp-controller="Flight" asp-action="Sort" />
-    </fieldset>
-</form>
+<h1>Sort</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -24,6 +15,9 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FlightId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pilot)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Destination)
@@ -46,9 +40,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.PlaneFk)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pilot)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -57,6 +48,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FlightId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pilot)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Destination)
@@ -80,18 +74,11 @@
                 @Html.DisplayFor(modelItem => item.PlaneFk)
             </td>
             <td>
-                <img src="~/uploads/@item.Pilot" width="50" height="50">
-            </td>
-            <td>
-                    @* @Html.ActionLink("Edit", "Edit", new { id=item.FlightId }) |*@
-                <a  asp-action="Edit" asp-route-id=@item.FlightId>Edit</a>
-                    @*  @Html.ActionLink("Details", "Details", new { id=item.FlightId  })*@
-                    <a asp-action="Details" asp-route-id=@item.FlightId>Details</a>
-                    @* @Html.ActionLink("Delete", "Delete", new { id=item.FlightId  })*@
-                    <a asp-controller="Flight" asp-action="Delete" asp-route-id=@item.FlightId>Delete</a>|
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }
     </tbody>
 </table>
-
