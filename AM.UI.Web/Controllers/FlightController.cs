@@ -30,6 +30,10 @@ namespace AM.UI.Web.Controllers
             else {
                 return View(sf.GetMany(p => p.FlightDate == dateDepart)); }
         }
+        public ActionResult IndexPartiel()
+        {
+            return View (sf.GetMany());
+        }
         public ActionResult Sort()
         {
             return View(sf.SortFlights());
@@ -80,7 +84,9 @@ namespace AM.UI.Web.Controllers
 
         // GET: FlightController/Edit/5
         public ActionResult Edit(int id)
+
         {
+            ViewBag.lsPlanes = new SelectList(sp.GetMany(), "PlaneId", "Information");
             return View(sf.GetById(id));
         }
 

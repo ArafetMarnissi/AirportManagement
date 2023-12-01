@@ -84,11 +84,13 @@
             </td>
             <td>
                     @* @Html.ActionLink("Edit", "Edit", new { id=item.FlightId }) |*@
-                <a  asp-action="Edit" asp-route-id=@item.FlightId>Edit</a>
+                <a  asp-action="Edit" asp-route-id=@item.FlightId>Edit</a>|
                     @*  @Html.ActionLink("Details", "Details", new { id=item.FlightId  })*@
-                    <a asp-action="Details" asp-route-id=@item.FlightId>Details</a>
+                    <a asp-action="Details" asp-route-id=@item.FlightId>Details</a>|
                     @* @Html.ActionLink("Delete", "Delete", new { id=item.FlightId  })*@
                     <a asp-controller="Flight" asp-action="Delete" asp-route-id=@item.FlightId>Delete</a>|
+                    <a asp-controller="Plane" asp-action="Details" asp-route-id="@item.PlaneFk">Plane</a>
+
             </td>
         </tr>
 }

@@ -66,6 +66,15 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PlaneFk)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pilot)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/uploads/@Model.Pilot" width="50" height="50">
+        </dd>
+
+
+        
     </dl>
     
     <form asp-action="Delete">
